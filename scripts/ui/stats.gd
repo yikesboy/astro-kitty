@@ -2,8 +2,8 @@ extends Node
 
 @export var rocket_path: NodePath
 
-@onready var horizontal_speed_display = $HBoxContainer/horizontal_speed
-@onready var vertical_speed_display = $HBoxContainer/vertical_speed
+@onready var horizontal_speed_display = $VBoxContainer/horizontal_speed
+@onready var vertical_speed_display = $VBoxContainer/vertical_speed
 
 @onready var rocket = get_node(rocket_path)
 

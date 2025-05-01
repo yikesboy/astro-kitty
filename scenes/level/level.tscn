@@ -16,6 +16,6 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Stats" parent="." instance=ExtResource("3_i166f")]
-offset = Vector2(0, -30)
-transform = Transform2D(1, 0, 0, 1, 0, -30)
+offset = Vector2(30, -30)
+transform = Transform2D(1, 0, 0, 1, 30, -30)
 rocket_path = NodePath("../Rocket")

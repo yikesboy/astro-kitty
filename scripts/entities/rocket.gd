@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var deathParticle: PackedScene
+
 var thrust_force: float = 150.0
 var rotation_speed: float = 100.0
 var gravity: float = 40.0
@@ -14,6 +16,9 @@ const thrust_buil_duration: float = 1.0
 func _ready() -> void:
 	$RocketAnimatedSprite.play("landing")
 	gravity_scale = 0
+	contact_monitor = true
+	max_contacts_reported = 3
+	connect("body_entered", Callable(self, "_on_body_entered"))
 	
 func _physics_process(delta: float) -> void:
 	apply_force(Vector2(0, gravity * mass))
@@ -55,3 +60,18 @@ func _physics_process(delta: float) -> void:
 				
 	if linear_velocity.length() > max_speed:
 		linear_velocity = linear_velocity.normalized() * max_speed
+		
+func _on_body_entered(body) -> void:
+	print("Collided with: ", body.name)
+	if body.name.begins_with("Enemy"):
+		Kill()
+
+func Kill():
+	var _particle = deathParticle.instantiate()
+	_particle.position = global_position
+	_particle.emitting = true
+	get_tree().current_scene.add_child(_particle)
+	visible = false
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	set_physics_process(false)

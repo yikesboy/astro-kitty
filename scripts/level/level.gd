@@ -16,7 +16,7 @@ func _ready() -> void:
 	platform.name = "Goal"
 	$Entities.add_child(platform)
 	
-	var asteroid_small = preload("res://scripts/entities/asteroid-small.tscn")
+	var asteroid_small = preload("res://scenes/entities/asteroid-small.tscn")
 	for i in range(6):
 		var ast = asteroid_small.instantiate()
 		ast.name = "Enemy%d" % i

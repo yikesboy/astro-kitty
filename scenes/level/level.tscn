@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkiu08kh5fg87"]
+
+[ext_resource type="PackedScene" uid="uid://75rclctn70hs" path="res://scenes/background/space_parallax_background.tscn" id="1_nbgty"]
+[ext_resource type="PackedScene" uid="uid://dd7aytg8ukndj" path="res://scenes/entities/rocket.tscn" id="2_i166f"]
+
+[node name="Level" type="Node2D"]
+
+[node name="SpaceParallaxBackground" parent="." instance=ExtResource("1_nbgty")]
+
+[node name="Rocket" parent="." instance=ExtResource("2_i166f")]
+
+[node name="Camera2D" type="Camera2D" parent="Rocket"]
+position = Vector2(-4, -2)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

@@ -5,24 +5,29 @@
 [ext_resource type="Texture2D" uid="uid://ciak8lptxcem4" path="res://assets/background/stars-small.png" id="3_s8rjw"]
 
 [node name="SpaceParallaxBackground" type="ParallaxBackground"]
+offset = Vector2(800, 800)
+transform = Transform2D(1, 0, 0, 1, 800, 800)
 
 [node name="NebulaLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(4096, 4096)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2048, 2048)
 
 [node name="NebulaSprite" type="Sprite2D" parent="NebulaLayer"]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_tuhst")
 
 [node name="BigStarLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(4096, 4096)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2048, 2048)
 
 [node name="BigStarSprite" type="Sprite2D" parent="BigStarLayer"]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_adrdi")
 
 [node name="SmallStarLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(4096, 4096)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(2048, 2048)
 
 [node name="SmallStarSprite" type="Sprite2D" parent="SmallStarLayer"]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_s8rjw")

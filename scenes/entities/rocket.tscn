@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://dd7aytg8ukndj"]
+
+[ext_resource type="Texture2D" uid="uid://cqspt1icqwgv7" path="res://assets/player/cat-rocket.png" id="1_3l0q3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2suw"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(68, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d40e5"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(34, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn1qa"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(0, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkitj"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(102, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrdly"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(136, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5gdn"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(170, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa4p8"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(204, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm3ca"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(170, 0, 34, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16cld"]
+atlas = ExtResource("1_3l0q3")
+region = Rect2(204, 0, 34, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6b6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2suw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d40e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn1qa")
+}],
+"loop": true,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkitj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrdly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5gdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa4p8")
+}],
+"loop": true,
+"name": &"thrust_build",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm3ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16cld")
+}],
+"loop": true,
+"name": &"thrust_sustain",
+"speed": 5.0
+}]
+
+[node name="Rocket" type="RigidBody2D"]
+
+[node name="RocketAnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_o6b6t")
+animation = &"landing"
+frame = 2
+frame_progress = 0.757052
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -30, 7, -22, 10, -15, 11, -11, 12, 0, 16, 5, 11, 9, 8, 9, 6, 12, 6, 16, 9, 18, 3, 18, 1, 14, -1, 14, -3, 18, -9, 18, -6, 16, -6, 12, -8, 9, -11, 9, -16, 5, -12, 0, -11, -11, -10, -15, -7, -22)
+
+[node name="RocketAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

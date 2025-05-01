@@ -15,3 +15,11 @@ func _ready() -> void:
 	platform.rotation = 0.0
 	platform.name = "Goal"
 	$Entities.add_child(platform)
+	
+	var asteroid_small = preload("res://scripts/entities/asteroid-small.tscn")
+	for i in range(6):
+		var ast = asteroid_small.instantiate()
+		ast.name = "Enemy%d" % i
+		ast.position = Vector2(randf_range(200, 800), randf_range(100, 400))
+		$Entities.add_child(ast)
+		print("Asteroid name: ", ast.name)

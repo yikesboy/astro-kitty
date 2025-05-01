@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxfdx2m8qoueu"
-path="res://.godot/imported/nebula-red.png-7ce866a32e0f6fe9c72caae1dc0189ad.ctex"
+uid="uid://ciak8lptxcem4"
+path="res://.godot/imported/stars-small.png-e6cc0925f63ff18f14e3ef90fb4a6322.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/nebula-red.png"
-dest_files=["res://.godot/imported/nebula-red.png-7ce866a32e0f6fe9c72caae1dc0189ad.ctex"]
+source_file="res://assets/sprites/background/stars-small.png"
+dest_files=["res://.godot/imported/stars-small.png-e6cc0925f63ff18f14e3ef90fb4a6322.ctex"]
 
 [params]
 

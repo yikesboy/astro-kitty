@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dd7aytg8ukndj"]
 
-[ext_resource type="Texture2D" uid="uid://cqspt1icqwgv7" path="res://assets/player/cat-rocket.png" id="1_3l0q3"]
+[ext_resource type="Texture2D" uid="uid://cqspt1icqwgv7" path="res://assets/sprites/player/cat-rocket.png" id="1_3l0q3"]
 [ext_resource type="Script" uid="uid://cei2p3bghje1s" path="res://scripts/entities/rocket.gd" id="1_n2suw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3l0q3"]

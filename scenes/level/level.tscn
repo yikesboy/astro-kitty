@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkiu08kh5fg87"]
 
 [ext_resource type="PackedScene" uid="uid://75rclctn70hs" path="res://scenes/background/space_parallax_background.tscn" id="1_nbgty"]
+[ext_resource type="Script" uid="uid://cg12x1p3gnwdf" path="res://scripts/level/level.gd" id="1_qkmgm"]
 [ext_resource type="PackedScene" uid="uid://dd7aytg8ukndj" path="res://scenes/entities/rocket.tscn" id="2_i166f"]
 [ext_resource type="PackedScene" uid="uid://cu072jphn02k0" path="res://scenes/ui/stats.tscn" id="3_i166f"]
-[ext_resource type="PackedScene" uid="uid://cjmck41tclche" path="res://scenes/entities/platform.tscn" id="4_qkmgm"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_qkmgm")
 
 [node name="SpaceParallaxBackground" parent="." instance=ExtResource("1_nbgty")]
 
@@ -22,5 +23,4 @@ offset = Vector2(30, -30)
 transform = Transform2D(1, 0, 0, 1, 30, -30)
 rocket_path = NodePath("../Rocket")
 
-[node name="Platform" parent="." instance=ExtResource("4_qkmgm")]
-position = Vector2(62, 187)
+[node name="Entities" type="Node2D" parent="."]

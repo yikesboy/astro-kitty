@@ -5,7 +5,7 @@ extends RigidBody2D
 var thrust_force: float = 150.0
 var rotation_speed: float = 100.0
 var gravity: float = 40.0
-var landing_speed_threshold: float = 100.0
+var landing_speed_threshold: float = 30.0
 var max_speed: float = 300.0
 
 var is_thrusting: bool = false
@@ -16,6 +16,7 @@ const thrust_buil_duration: float = 1.0
 var is_touching_platform: bool = false
 var contact_start_time: float = 0.0
 var steady_landing_duration: float = 2.0
+var is_bottom_contact: bool = false
 
 func _ready() -> void:
 	$RocketAnimatedSprite.play("landing")
@@ -66,9 +67,17 @@ func _physics_process(delta: float) -> void:
 		linear_velocity = linear_velocity.normalized() * max_speed
 		
 	if is_touching_platform:
-		var speed = linear_velocity.length()
+		var speed = linear_velocity.y
 		var is_slow_enough = speed < landing_speed_threshold
 		
+		is_bottom_contact = false
+		var platform = get_node_or_null("../Entities/Goal")
+		if platform and $BottomDetector/CollisionShape2D:
+			for body in $BottomDetector.get_overlapping_areas():
+				if body == platform:
+					is_bottom_contact = true
+					break
+
 		if is_slow_enough:
 			var elapsed = Time.get_ticks_msec() / 1000.0 - contact_start_time
 			if elapsed >= steady_landing_duration:
@@ -81,24 +90,25 @@ func _on_body_entered(body) -> void:
 	if body.name.begins_with("Enemy"):
 		Kill()
 	elif body.name == "Goal":
-		var speed = linear_velocity.length()
+		var speed = linear_velocity.y
 		var is_slow_enough = speed < landing_speed_threshold
-				
-		if is_slow_enough:
+		
+		is_bottom_contact = false
+		for body_overlapping in $BottomDetector.get_overlapping_bodies():
+			if body_overlapping == body:
+				is_bottom_contact = true
+				break
+		
+		if is_slow_enough and is_bottom_contact:
 			is_touching_platform = true
 			contact_start_time = Time.get_ticks_msec() / 1000.0
 		else:
-			print(is_slow_enough)
 			Kill()
 
 func _on_body_exited(body) -> void:
 	if body.name == "Goal":
 		is_touching_platform = false
 		
-
-func Win():
-	print("WIN")
-
 func Kill():
 	var _particle = deathParticle.instantiate()
 	_particle.position = global_position
@@ -108,3 +118,10 @@ func Kill():
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	set_physics_process(false)
+	Lose()
+	
+func Win():
+	print("WIN")
+	
+func Lose():
+	print("LOSE")

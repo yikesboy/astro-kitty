@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://6ed3ofdtokyx"]
+
+[ext_resource type="FontFile" uid="uid://bfvbu0g45dq36" path="res://assets/fonts/Ethnocentric Rg.otf" id="1_72dqr"]
+
+[node name="GameWon" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_72dqr")
+theme_override_font_sizes/font_size = 72
+text = "You Win!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="play_again" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_72dqr")
+theme_override_font_sizes/font_size = 32
+text = "Again"
+
+[node name="menu" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_72dqr")
+theme_override_font_sizes/font_size = 32
+text = "Menu"

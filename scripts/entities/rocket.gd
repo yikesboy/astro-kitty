@@ -15,8 +15,11 @@ const thrust_buil_duration: float = 1.0
 
 var is_touching_platform: bool = false
 var contact_start_time: float = 0.0
-var steady_landing_duration: float = 2.0
+var steady_landing_duration: float = 3.0
 var is_bottom_contact: bool = false
+
+var game_over_animation_player: AnimationPlayer
+var game_won_animation_player: AnimationPlayer
 
 func _ready() -> void:
 	$RocketAnimatedSprite.play("landing")
@@ -24,6 +27,16 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 3
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	$GameOver.hide()
+	$GameWon.hide()
+	$GameOver/VBoxContainer/HBoxContainer/retry.connect("pressed", Callable(self, "_on_retry_pressed"))
+	$GameOver/VBoxContainer/HBoxContainer/menu.connect("pressed", Callable(self, "_on_menu_pressed"))
+	$GameWon/VBoxContainer/HBoxContainer/play_again.connect("pressed", Callable(self, "_on_retry_pressed"))
+	$GameWon/VBoxContainer/HBoxContainer/menu.connect("pressed", Callable(self, "_on_menu_pressed"))
+	
+	game_over_animation_player = $GameOver/FadeIn/AnimationPlayer
+	game_won_animation_player = $GameWon/FadeIn/AnimationPlayer
+	
 	
 func _physics_process(delta: float) -> void:
 	apply_force(Vector2(0, gravity * mass))
@@ -122,6 +135,16 @@ func Kill():
 	
 func Win():
 	print("WIN")
+	$GameWon.show()
 	
 func Lose():
 	print("LOSE")
+	$GameOver.show()
+	
+func _on_retry_pressed():
+	print("RETRY")
+	get_tree().reload_current_scene()
+
+func _on_menu_pressed():
+	print("MENU")
+	get_tree().change_scene_to_file("res://scenes/ui/titlescreen.tscn")

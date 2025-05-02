@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://uk1fvpvqc2ja"]
+
+[ext_resource type="Script" uid="uid://c8jo4bniipq7g" path="res://scripts/ui/titlescreen.gd" id="1_8gxc7"]
+[ext_resource type="FontFile" uid="uid://bfvbu0g45dq36" path="res://assets/fonts/Ethnocentric Rg.otf" id="1_mj86u"]
+[ext_resource type="PackedScene" uid="uid://75rclctn70hs" path="res://scenes/background/space_parallax_background.tscn" id="2_8gxc7"]
+
+[sub_resource type="Animation" id="Animation_8gxc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hlsle"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gxc7"]
+_data = {
+&"RESET": SubResource("Animation_8gxc7"),
+&"fade_in": SubResource("Animation_hlsle")
+}
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gxc7")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mj86u")
+theme_override_font_sizes/font_size = 72
+text = "Astro Kitty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Play" type="Button" parent="Menu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mj86u")
+theme_override_font_sizes/font_size = 32
+text = "Play
+"
+
+[node name="Quit" type="Button" parent="Menu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mj86u")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="SpaceParallaxBackground" parent="." instance=ExtResource("2_8gxc7")]
+
+[node name="FadeIn" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
+libraries = {
+&"": SubResource("AnimationLibrary_8gxc7")
+}
+
+[connection signal="pressed" from="Menu/HBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="FadeIn/AnimationPlayer" to="." method="_on_animation_finished"]

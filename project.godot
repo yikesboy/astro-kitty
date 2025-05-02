@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="astrokitty"
-run/main_scene="uid://dkiu08kh5fg87"
+run/main_scene="uid://uk1fvpvqc2ja"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [input]

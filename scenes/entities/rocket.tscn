@@ -115,8 +115,6 @@ frame_progress = 0.398939
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -30, 7, -22, 10, -15, 11, -11, 12, 0, 16, 5, 11, 9, 8, 9, 6, 12, 6, 16, 9, 18, 3, 18, 1, 14, -1, 14, -3, 18, -9, 18, -6, 16, -6, 12, -8, 9, -11, 9, -16, 5, -12, 0, -11, -11, -10, -15, -7, -22)
 
-[node name="RocketAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
 [node name="BottomDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomDetector"]

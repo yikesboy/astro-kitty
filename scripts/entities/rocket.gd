@@ -20,6 +20,7 @@ var is_bottom_contact: bool = false
 
 var game_over_animation_player: AnimationPlayer
 var game_won_animation_player: AnimationPlayer
+@onready var goal_indicator = $"Goal Indicator/MarginContainer/HBoxContainer/VBoxContainer/Sprite2D"
 
 func _ready() -> void:
 	$RocketAnimatedSprite.play("landing")
@@ -97,6 +98,11 @@ func _physics_process(delta: float) -> void:
 				Win()
 		else:
 			is_touching_platform = false
+			
+	var platform = get_node_or_null("../Entities/Goal")
+	if platform:
+		var direction = platform.global_position - global_position
+		goal_indicator.rotation = direction.angle() + PI/2
 		
 func _on_body_entered(body) -> void:
 	print("Collided with: ", body.name)

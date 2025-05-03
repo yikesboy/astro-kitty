@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkiu08kh5fg87"]
+[gd_scene load_steps=8 format=3 uid="uid://dkiu08kh5fg87"]
 
 [ext_resource type="PackedScene" uid="uid://75rclctn70hs" path="res://scenes/background/space_parallax_background.tscn" id="1_nbgty"]
 [ext_resource type="Script" uid="uid://cg12x1p3gnwdf" path="res://scripts/level/level.gd" id="1_qkmgm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cu072jphn02k0" path="res://scenes/ui/stats.tscn" id="3_i166f"]
 [ext_resource type="PackedScene" uid="uid://qghxne6okwwg" path="res://scenes/ui/game_over.tscn" id="5_hnne4"]
 [ext_resource type="PackedScene" uid="uid://6ed3ofdtokyx" path="res://scenes/ui/game_won.tscn" id="5_vpf64"]
+[ext_resource type="PackedScene" uid="uid://bghm5remlmq46" path="res://scenes/ui/goal_indicator.tscn" id="7_wcngd"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_qkmgm")
@@ -20,9 +21,11 @@ position = Vector2(-4, -2)
 zoom = Vector2(2.2, 2.2)
 position_smoothing_enabled = true
 
-[node name="GameOver" parent="Rocket" instance=ExtResource("5_hnne4")]
+[node name="Goal Indicator" parent="Rocket" instance=ExtResource("7_wcngd")]
 
 [node name="GameWon" parent="Rocket" instance=ExtResource("5_vpf64")]
+
+[node name="GameOver" parent="Rocket" instance=ExtResource("5_hnne4")]
 
 [node name="Stats" parent="." instance=ExtResource("3_i166f")]
 offset = Vector2(30, -30)

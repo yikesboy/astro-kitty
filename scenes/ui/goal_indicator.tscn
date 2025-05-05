@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bghm5remlmq46"]
 
-[ext_resource type="Texture2D" uid="uid://70vowns5oiwv" path="res://assets/sprites/entities/New Piskel.png" id="1_2ewsk"]
+[ext_resource type="Texture2D" uid="uid://dnpioq1jy541t" path="res://assets/sprites/entities/arrow.png" id="1_2ewsk"]
 
 [node name="GoalIndicator" type="CanvasLayer"]
 
